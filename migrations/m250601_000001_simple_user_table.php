@@ -1,0 +1,21 @@
+<?php
+
+use yii\db\Migration;
+
+class m250601_000001_simple_user_table extends Migration
+{
+    public function up(): void
+    {
+        $this->createTable('{{%user}}', [
+            'id'            => $this->primaryKey(),
+            'username'      => $this->string()->notNull()->unique(),
+            'password_hash' => $this->string()->notNull(),
+            'auth_key'      => $this->string(32)->notNull(),
+        ]);
+    }
+
+    public function down(): void
+    {
+        $this->dropTable('{{%user}}');
+    }
+}

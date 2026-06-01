@@ -2,6 +2,9 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+if (file_exists(__DIR__ . '/db-local.php')) {
+    $db = require __DIR__ . '/db-local.php';
+}
 
 $config = [
     'id' => 'basic',
@@ -11,10 +14,11 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'name' => 'Bench Boss',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'NeknzjhHOAXde_mwh97EgV4kYhHwMzgQ',
+            'cookieValidationKey' => 'cY6mFWCya1T9B-X_ukNcRP3oPX9KRqDc',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -42,16 +46,22 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
+    'container' => [
+        'definitions' => [
+            \app\services\CsvImportService::class => \app\services\CsvImportService::class,
+            \app\services\PlayerStatService::class => \app\services\PlayerStatService::class,
+            \app\services\RefreshTableService::class => \app\services\RefreshTableService::class,
+        ],
+    ]
 ];
 
 if (YII_ENV_DEV) {

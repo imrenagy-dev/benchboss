@@ -1,0 +1,138 @@
+<?php
+
+use yii\db\Migration;
+
+class m260531_224552_create_table_imported_player_statistics_extended extends Migration
+{
+    public function safeUp()
+    {
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
+        }
+
+        $this->createTable(
+            '{{%imported_player_statistics_extended}}',
+            [
+                'firstName' => $this->string(120),
+                'lastName' => $this->string(120),
+                'personId' => $this->integer()->notNull(),
+                'gameId' => $this->integer()->notNull(),
+                'gameDateTimeEst' => $this->dateTime(),
+                'gameType' => $this->string(120),
+                'gameLabel' => $this->string(120),
+                'gameSubLabel' => $this->string(120),
+                'seriesGameNumber' => $this->string(50),
+                'win' => $this->integer(),
+                'home' => $this->integer(),
+                'playerteamId' => $this->integer(),
+                'playerteamCity' => $this->string(120),
+                'playerteamName' => $this->string(120),
+                'opponentteamId' => $this->integer(),
+                'opponentteamCity' => $this->string(120),
+                'opponentteamName' => $this->string(120),
+                'comment' => $this->text(),
+                'startingPosition' => $this->string(120),
+                'numMinutes' => $this->float(),
+                'points' => $this->float(),
+                'assists' => $this->float(),
+                'reboundsTotal' => $this->float(),
+                'reboundsOffensive' => $this->float(),
+                'reboundsDefensive' => $this->float(),
+                'fieldGoalsMade' => $this->float(),
+                'fieldGoalsAttempted' => $this->float(),
+                'fieldGoalsPercentage' => $this->float(),
+                'threePointersMade' => $this->float(),
+                'threePointersAttempted' => $this->float(),
+                'threePointersPercentage' => $this->float(),
+                'freeThrowsMade' => $this->float(),
+                'freeThrowsAttempted' => $this->float(),
+                'freeThrowsPercentage' => $this->float(),
+                'steals' => $this->float(),
+                'blocks' => $this->float(),
+                'blocksAgainst' => $this->float(),
+                'turnovers' => $this->float(),
+                'foulsPersonal' => $this->float(),
+                'foulsAgainst' => $this->float(),
+                'plusMinusPoints' => $this->float(),
+                'doubleDouble' => $this->float(),
+                'tripleDouble' => $this->float(),
+                'estimatedOffensiveRating' => $this->float(),
+                'offensiveRating' => $this->float(),
+                'spWorkOffensiveRating' => $this->float(),
+                'estimatedDefensiveRating' => $this->float(),
+                'defensiveRating' => $this->float(),
+                'spWorkDefensiveRating' => $this->float(),
+                'estimatedNetRating' => $this->float(),
+                'netRating' => $this->float(),
+                'spWorkNetRating' => $this->float(),
+                'assistPercentage' => $this->float(),
+                'assistToTurnoverRatio' => $this->float(),
+                'assistRatio' => $this->float(),
+                'offensiveReboundPercentage' => $this->float(),
+                'defensiveReboundPercentage' => $this->float(),
+                'reboundPercentage' => $this->float(),
+                'teamTurnoverPercentage' => $this->float(),
+                'estimatedTurnoverPercentage' => $this->float(),
+                'effectiveFieldGoalPercentage' => $this->float(),
+                'trueShootingPercentage' => $this->float(),
+                'usagePercentage' => $this->float(),
+                'estimatedUsagePercentage' => $this->float(),
+                'estimatedPace' => $this->float(),
+                'pace' => $this->float(),
+                'pacePer40' => $this->float(),
+                'spWorkPace' => $this->float(),
+                'playerImpactEstimate' => $this->float(),
+                'possessions' => $this->float(),
+                'pointsOffTurnovers' => $this->float(),
+                'pointsSecondChance' => $this->float(),
+                'pointsFastBreak' => $this->float(),
+                'pointsInPaint' => $this->float(),
+                'opponentPointsOffTurnovers' => $this->float(),
+                'opponentPointsSecondChance' => $this->float(),
+                'opponentPointsFastBreak' => $this->float(),
+                'opponentPointsInPaint' => $this->float(),
+                'percentFieldGoalAttempts2Point' => $this->float(),
+                'percentFieldGoalAttempts3Point' => $this->float(),
+                'percentPoints2Point' => $this->float(),
+                'percentPoints2PointMidRange' => $this->float(),
+                'percentPoints3Point' => $this->float(),
+                'percentPointsFastBreak' => $this->float(),
+                'percentPointsFreeThrow' => $this->float(),
+                'percentPointsOffTurnovers' => $this->float(),
+                'percentPointsInPaint' => $this->float(),
+                'percentAssisted2PointMade' => $this->float(),
+                'percentUnassisted2PointMade' => $this->float(),
+                'percentAssisted3PointMade' => $this->float(),
+                'percentUnassisted3PointMade' => $this->float(),
+                'percentAssistedFieldGoalsMade' => $this->float(),
+                'percentUnassistedFieldGoalsMade' => $this->float(),
+                'percentTeamFieldGoalsMade' => $this->float(),
+                'percentTeamFieldGoalsAttempted' => $this->float(),
+                'percentTeamThreePointersMade' => $this->float(),
+                'percentTeamThreePointersAttempted' => $this->float(),
+                'percentTeamFreeThrowsMade' => $this->float(),
+                'percentTeamFreeThrowsAttempted' => $this->float(),
+                'percentTeamOffensiveRebounds' => $this->float(),
+                'percentTeamDefensiveRebounds' => $this->float(),
+                'percentTeamRebounds' => $this->float(),
+                'percentTeamAssists' => $this->float(),
+                'percentTeamTurnovers' => $this->float(),
+                'percentTeamSteals' => $this->float(),
+                'percentTeamBlocks' => $this->float(),
+                'percentTeamBlocksAgainst' => $this->float(),
+                'percentTeamFoulsPersonal' => $this->float(),
+                'percentTeamFoulsDrawn' => $this->float(),
+                'percentTeamPoints' => $this->float(),
+            ],
+            $tableOptions
+        );
+
+        $this->addPrimaryKey('PRIMARYKEY', '{{%imported_player_statistics_extended}}', ['personId', 'gameId']);
+    }
+
+    public function safeDown()
+    {
+        $this->dropTable('{{%imported_player_statistics_extended}}');
+    }
+}
